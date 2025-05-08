@@ -1,386 +1,468 @@
 :root {
-    --brand-primary: #ffd52a; /* Vibrant primary blue */
-    --brand-secondary: #6c757d; /* Sophisticated gray */
-    --brand-accent: #ffd52a; /* Success green for positive highlights */
-    --brand-light: #f8f9fa; /* Clean light background */
-    --text-primary: #343a40; /* Dark, readable text */
-    --text-secondary: #6c757d; /* Softer secondary text */
-    --border-color: #dee2e6; /* Light gray for borders */
-    --box-shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05);
-    --box-shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
-    --transition-fast: 0.2s ease-in-out;
-    --transition-medium: 0.3s ease-in-out;
-  }
+  --brand-primary: #007bff;
+  --brand-secondary: #6c757d;
+  --brand-accent: #28a745;
+  --brand-light: #f8f9fa;
+  --text-primary: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(255, 255, 255, 0.2);
+  --box-shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05);
+  --box-shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --transition-fast: 0.2s ease-in-out;
+  --transition-medium: 0.3s ease-in-out;
+  --fctucker-yellow: #FFD529;
+  --fctucker-black: #1e1e1e;
+}
 
-  body {
-    font-family: 'Nunito Sans', sans-serif; /* A modern, readable sans-serif font */
-    color: var(--text-primary);
-    background-color: var(--brand-light);
-    line-height: 1.7;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased; /* Improve font rendering on macOS */
-    -moz-osx-font-smoothing: grayscale; /* Improve font rendering on Firefox */
-  }
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  color: var(--fctucker-black);
+  background-color: var(--brand-light);
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  /* Hero Section */
+/* Hero Section */
+header.hero {
+  background: linear-gradient(rgba(30, 30, 30, 0.6), rgba(30, 30, 30, 0.6)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+  color: var(--text-primary);
+  padding: 10rem 3rem; /* Increased top padding to make space for floating nav */
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden;
+}
+
+/* Floating Hero Navigation */
+.hero-nav {
+  position: absolute; /* Make it float */
+  top: 2rem; /* Adjust distance from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20; /* Ensure it's above other hero content */
+  background: rgba(30, 30, 30, 0.7); /* Slightly more opaque background */
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem; /* Slightly more padding */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  display: block; /* Ensure it's visible! */
+}
+
+.hero-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-nav li {
+  margin: 0 1.5rem;
+  list-style: none;
+}
+
+.hero-nav a {
+  color: var(--fctucker-yellow);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  padding: 0.75rem 0;
+  position: relative;
+}
+
+.hero-nav a:hover {
+  color: var(--fctucker-yellow);
+}
+
+/* Underline with slight delay and animation for hero nav */
+.hero-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--fctucker-yellow);
+  transition: width var(--transition-medium) cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.hero-nav a:hover::after {
+  width: 100%;
+}
+
+header.hero h1 {
+  font-size: 4rem;
+  margin-top: 3rem; /* Adjust spacing below the floating nav */
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--fctucker-yellow);
+}
+
+header.hero p {
+  font-size: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.9;
+  font-weight: 300;
+  color: var(--text-secondary);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--fctucker-yellow);
+  color: var(--fctucker-black);
+  padding: 1.2rem 2.5rem;
+  border: none;
+  border-radius: 10px;
+  margin-top: 2.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--transition-medium), transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: var(--box-shadow-medium);
+}
+
+.btn:hover {
+  background: #e6c31f;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--box-shadow-light);
+}
+
+/* Remove the separate nav element (still hidden) */
+nav {
+  display: none;
+}
+
+/* Main Content */
+.container {
+  max-width: 1300px;
+  margin: 3rem auto;
+  padding: 0 3rem;
+}
+
+section {
+  background: #fff;
+  padding: 4rem;
+  margin-bottom: 3rem;
+  border-radius: 18px;
+  box-shadow: var(--box-shadow-light);
+  transition: box-shadow var(--transition-fast);
+  color: var(--fctucker-black);
+}
+
+section:hover {
+  box-shadow: var(--box-shadow-medium);
+}
+
+section h2 {
+  display: flex;
+  align-items: center;
+  font-size: 2.2rem;
+  margin-bottom: 1.8rem;
+  color: var(--fctucker-black);
+  font-weight: 700;
+  line-height: 2.3rem;
+}
+
+section h2 i {
+  color: var(--brand-primary);
+  margin-right: 0.8rem;
+  font-size: 1.3em;
+}
+
+section p {
+  color: var(--brand-secondary);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+ul {
+  padding-left: 1.8rem;
+}
+
+ul li {
+  margin-bottom: 0.9rem;
+  color: var(--brand-secondary);
+  list-style-type: disc;
+}
+
+ul strong {
+  color: var(--fctucker-black);
+  font-weight: 600;
+}
+
+/* Card Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow-light);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  color: var(--fctucker-black);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-medium);
+}
+
+.card i {
+  font-size: 3rem;
+  color: var(--brand-primary);
+  margin-bottom: 0.8rem;
+}
+
+.card strong {
+  font-size: 1.2rem;
+  color: var(--fctucker-black);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.card p {
+  color: var(--brand-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* Investments Section - More Visual Emphasis */
+#investments p strong {
+  display: block;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: #1e1e1e;
+}
+
+/* Location Section - Added Subtle Styling */
+#location p {
+  font-size: 1.1rem;
+  color: var(--brand-secondary);
+}
+
+/* Partnership Section */
+.partnership-section {
+  background: #fff;
+  padding: 3rem;
+  margin-bottom: 3rem;
+  border-radius: 18px;
+  box-shadow: var(--box-shadow-light);
+  text-align: center;
+}
+
+.partnership-section h2 {
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--fctucker-black);
+  font-weight: 700;
+}
+
+.partnership-section h2 i {
+  color: var(--fctucker-yellow);
+  margin-right: 0.8rem;
+  font-size: 1.3em;
+}
+
+.partnership-logo {
+  max-width: 300px;
+  margin: 0 auto 1.5rem;
+}
+
+.partnership-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.partnership-section p {
+  color: var(--brand-secondary);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.fctucker-brand {
+  color: var(--fctucker-yellow);
+  font-weight: 700;
+}
+
+/* Footer */
+footer {
+  background: var(--fctucker-black);
+  color: var(--fctucker-yellow);
+  text-align: center;
+  padding: 2.5rem;
+  font-size: 0.95rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+footer a.fctucker-link {
+  color: var(--fctucker-yellow);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+footer a.fctucker-link:hover {
+  color: var(--brand-accent);
+}
+
+/* Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive Design - More Refined */
+@media (max-width: 992px) {
   header.hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-    color: #fff;
-    padding: 10rem 3rem;
-    text-align: center;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 70vh;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    overflow: hidden; /* Clip the rounded corners */
+    padding: 8rem 2rem; /* Adjust top padding for smaller screens */
+    min-height: 65vh;
+  }
+
+  .hero-nav {
+    top: 1.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .hero-nav li {
+    margin: 0 1rem;
   }
 
   header.hero h1 {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.06em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle text shadow for depth */
+    font-size: 3rem;
+    margin-top: 2rem;
   }
 
   header.hero p {
-    font-size: 1.5rem;
-    max-width: 900px;
-    margin: 0 auto 2.5rem;
-    line-height: 1.9;
-    font-weight: 300;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 1.3rem;
   }
 
-  .btn {
-    display: inline-block;
-    background: var(--brand-primary);
-    color: #fff;
-    padding: 1.2rem 2.5rem;
-    border: none;
-    border-radius: 10px;
-    margin-top: 2.5rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background var(--transition-medium), transform var(--transition-fast), box-shadow var(--transition-fast);
-    box-shadow: var(--box-shadow-medium);
-  }
-
-  .btn:hover {
-    background: #0056b3;
-    transform: translateY(-3px); /* Subtle lift on hover */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  }
-
-  .btn:active {
-    transform: translateY(0);
-    box-shadow: var(--box-shadow-light);
-  }
-
-  /* Navigation */
-  nav {
-    position: sticky;
-    top: 0;
-    background: rgba(255, 255, 255, 0.97);
-    border-bottom: 1px solid var(--border-color);
-    z-index: 100;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 1.2rem 3rem;
-    margin: 0;
-  }
-
-  nav li {
-    margin: 0 2rem;
-  }
-
-  nav a {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color var(--transition-fast);
-    padding: 0.6rem 0;
-    position: relative;
-  }
-
-  nav a:hover {
-    color: var(--brand-primary);
-  }
-
-  /* Underline with slight delay and animation */
-  nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color: var(--brand-primary);
-    transition: width var(--transition-medium) cubic-bezier(0.22, 0.61, 0.36, 1); /* More natural animation */
-  }
-
-  nav a:hover::after {
-    width: 100%;
-  }
-
-  nav .active {
-    color: var(--brand-accent); /* Highlight the active section (if you implement JS for this) */
-    font-weight: 600;
-  }
-
-  /* Main Content */
   .container {
-    max-width: 1300px;
-    margin: 3rem auto;
-    padding: 0 3rem;
+    padding: 0 2rem;
   }
 
   section {
-    background: #fff;
-    padding: 4rem;
-    margin-bottom: 3rem;
-    border-radius: 18px;
-    box-shadow: var(--box-shadow-light);
-    transition: box-shadow var(--transition-fast);
-  }
-
-  section:hover {
-    box-shadow: var(--box-shadow-medium);
+    padding: 3rem;
   }
 
   section h2 {
-    display: flex;
-    align-items: center;
-    font-size: 2.2rem;
-    margin-bottom: 1.8rem;
-    color: var(--text-primary);
-    font-weight: 700;
+    font-size: 2rem;
   }
 
-  section h2 i {
-    color: var(--brand-accent);
-    margin-right: 0.8rem;
-    font-size: 1.3em;
-  }
-
-  section p {
-    color: var(--text-secondary);
-    line-height: 1.9;
-    margin-bottom: 2rem;
-    font-size: 1.05rem;
-  }
-
-  ul {
-    padding-left: 1.8rem;
-  }
-
-  ul li {
-    margin-bottom: 0.9rem;
-    color: var(--text-secondary);
-    list-style-type: none; /* More modern bullet point */
-  }
-
-  ul strong {
-    color: var(--text-primary);
-    font-weight: 600;
-  }
-
-  /* Card Grid */
   .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
   }
 
   .card {
-    background: #fff;
-    padding: 2.5rem;
-    border-radius: 15px;
-    box-shadow: var(--box-shadow-light);
-    display: flex;
+    padding: 2rem;
+  }
+
+  .partnership-section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header.hero {
+    padding: 6rem 1.5rem; /* Adjust top padding for smaller screens */
+    min-height: auto; /* Adjust min-height for stacked nav */
     flex-direction: column;
-    gap: 1.2rem;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    justify-content: flex-start;
   }
 
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--box-shadow-medium);
+  .hero-nav {
+    position: relative; /* Revert to relative for stacked layout */
+    top: auto;
+    left: auto;
+    transform: none;
+    background: rgba(30, 30, 30, 0.8); /* Keep a background for readability */
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem; /* Add space below the nav */
+    border-radius: 8px;
   }
 
-  .card i {
-    font-size: 3rem;
-    color: var(--brand-primary);
-    margin-bottom: 0.8rem;
+  .hero-nav ul {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .card strong {
-    font-size: 1.2rem;
-    color: var(--text-primary);
-    font-weight: 600;
-    margin-bottom: 0.3rem;
+  .hero-nav li {
+    margin: 0.5rem 0;
   }
 
-  .card p {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.8;
+  .hero-nav a {
+    padding: 0.75rem;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
   }
 
-  /* Investments Section - More Visual Emphasis */
-  #investments p strong {
-    display: block;
+  .hero-nav a::after {
+    display: none;
+  }
+
+  header.hero h1 {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+  }
+
+  header.hero p {
     font-size: 1.15rem;
-    margin-bottom: 0.5rem;
-    color: var(--brand-accent);
   }
 
-  /* Location Section - Added Subtle Styling */
-  #location p {
+  section {
+    padding: 2.5rem;
+  }
+
+  section h2 {
+    font-size: 1.8rem;
+  }
+
+  .partnership-section {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  header.hero h1 {
+    font-size: 2.2rem;
+  }
+
+  header.hero p {
     font-size: 1.1rem;
   }
 
-  /* Footer */
-  footer {
-    background: var(--text-primary);
-    color: var(--brand-light);
-    text-align: center;
-    padding: 2.5rem;
-    font-size: 0.95rem;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+  .card-grid {
+    grid-template-columns: 1fr;
   }
 
-  footer a {
-    color: var(--brand-primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color var(--transition-fast);
+  .card {
+    padding: 1.8rem;
   }
-
-  footer a:hover {
-    color: var(--brand-accent);
-    text-decoration: underline;
-  }
-
-  /* Scroll Behavior */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Responsive Design - More Refined */
-  @media (max-width: 992px) {
-    header.hero {
-      padding: 8rem 2rem;
-      min-height: 60vh;
-    }
-
-    header.hero h1 {
-      font-size: 3rem;
-    }
-
-    header.hero p {
-      font-size: 1.3rem;
-    }
-
-    nav ul {
-      padding: 1rem 2rem;
-    }
-
-    nav li {
-      margin: 0 1.5rem;
-    }
-
-    .container {
-      padding: 0 2rem;
-    }
-
-    section {
-      padding: 3rem;
-    }
-
-    section h2 {
-      font-size: 2rem;
-    }
-
-    .card-grid {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      padding: 2rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    header.hero {
-      padding: 6rem 1.5rem;
-    }
-
-    header.hero h1 {
-      font-size: 2.5rem;
-    }
-
-    header.hero p {
-      font-size: 1.15rem;
-    }
-
-    nav ul {
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-    }
-
-    nav li {
-      margin: 0.75rem 0;
-    }
-
-    nav a {
-      padding: 0.75rem;
-      border-radius: 8px;
-      width: 100%;
-      text-align: center;
-    }
-
-    nav a::after {
-      display: none; /* Remove underline on smaller, centered nav */
-    }
-
-    section {
-      padding: 2.5rem;
-    }
-
-    section h2 {
-      font-size: 1.8rem;
-    }
-  }
-
-  @media (max-width: 576px) {
-    header.hero h1 {
-      font-size: 2.2rem;
-    }
-
-    header.hero p {
-      font-size: 1.1rem;
-    }
-
-    .card-grid {
-      grid-template-columns: 1fr; /* Stack cards on very small screens */
-    }
-
-    .card {
-      padding: 1.8rem;
-    }
-  }
+}
